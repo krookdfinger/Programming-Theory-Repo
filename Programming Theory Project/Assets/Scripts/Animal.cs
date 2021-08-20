@@ -49,7 +49,7 @@ public class Animal : MonoBehaviour
 
         if (isMoving)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            transform.Translate( Time.deltaTime * speed * Vector3.forward);
         }
 
     }
@@ -102,7 +102,7 @@ public class Animal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Wall")
+        if (other.CompareTag("Wall"))
         {
             Stop();
             touchingWall += 1;
@@ -122,7 +122,7 @@ public class Animal : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (touchingWall > 0 && other.tag == "Wall")
+        if (touchingWall > 0 && other.CompareTag("Wall"))
         {
             currentAngle += changeAngle;
             if (currentAngle < 0)
@@ -134,7 +134,7 @@ public class Animal : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Wall")
+        if (other.CompareTag("Wall"))
         {
             touchingWall -= 1;
             Walk();
