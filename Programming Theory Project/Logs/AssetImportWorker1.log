@@ -267,3 +267,214 @@ System memory in use after: 60.1 MB.
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1630.
 Total: 2.117800 ms (FindLiveObjects: 0.201400 ms CreateObjectMapping: 0.099900 ms MarkObjects: 1.726500 ms  DeleteObjects: 0.089200 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000760 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.816 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1149 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.0 MB.
+System memory in use after: 60.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1633.
+Total: 1.630800 ms (FindLiveObjects: 0.155200 ms CreateObjectMapping: 0.038500 ms MarkObjects: 1.343200 ms  DeleteObjects: 0.092800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1484.379431 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7e9e50b5e3f234c8c9b22cbd43b5233') in 0.008741 seconds
+  Import took 0.011377 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002180 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.800 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1149 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.0 MB.
+System memory in use after: 60.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1636.
+Total: 1.780200 ms (FindLiveObjects: 0.130100 ms CreateObjectMapping: 0.036700 ms MarkObjects: 1.524100 ms  DeleteObjects: 0.088600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 30.657017 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bb7ec63cc71d670be342c75080e282e') in 0.005443 seconds
+  Import took 0.008088 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000834 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.786 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1149 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.0 MB.
+System memory in use after: 60.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1639.
+Total: 1.866700 ms (FindLiveObjects: 0.142000 ms CreateObjectMapping: 0.038500 ms MarkObjects: 1.621300 ms  DeleteObjects: 0.063600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 76.048945 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83441392dd3ae591f8e7d6697d3f5464') in 0.005928 seconds
+  Import took 0.008421 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.725448 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83441392dd3ae591f8e7d6697d3f5464') in 0.002958 seconds
+  Import took 0.005140 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000889 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.32 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.796 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.31 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1149 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.0 MB.
+System memory in use after: 60.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1642.
+Total: 2.102000 ms (FindLiveObjects: 0.187400 ms CreateObjectMapping: 0.092200 ms MarkObjects: 1.730500 ms  DeleteObjects: 0.090500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 341.905814 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f625ef15d6182794b52bf40ac1708a4') in 0.005645 seconds
+  Import took 0.007869 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.113565 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f625ef15d6182794b52bf40ac1708a4') in 0.003566 seconds
+  Import took 0.005769 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002480 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.833 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1149 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.0 MB.
+System memory in use after: 60.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1645.
+Total: 2.206700 ms (FindLiveObjects: 0.236700 ms CreateObjectMapping: 0.066800 ms MarkObjects: 1.819000 ms  DeleteObjects: 0.083400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 144.325445 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b57c9556fba07f843db689d342600ef') in 0.005008 seconds
+  Import took 0.007516 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000684 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.755 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1149 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.0 MB.
+System memory in use after: 60.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1648.
+Total: 1.814700 ms (FindLiveObjects: 0.147800 ms CreateObjectMapping: 0.036300 ms MarkObjects: 1.536500 ms  DeleteObjects: 0.093200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001014 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.823 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1149 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.0 MB.
+System memory in use after: 60.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1651.
+Total: 1.824400 ms (FindLiveObjects: 0.142800 ms CreateObjectMapping: 0.038700 ms MarkObjects: 1.559300 ms  DeleteObjects: 0.082400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 423.403569 seconds.
+  path: Assets/Scripts/Animal.cs
+  artifactKey: Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Animal.cs using Guid(db52b9b15a001504a84075074be13b8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd550c9940654d8c85b048377b76babbf') in 0.005023 seconds
+  Import took 0.007117 seconds .
+

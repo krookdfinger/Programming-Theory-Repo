@@ -13,7 +13,7 @@ public class Animal : MonoBehaviour
     private float currentAngle = 0.0f;
     private float changeAngle = 0.0f;
     private int touchingWall = 0;
-
+    private bool isAutomated = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,14 @@ public class Animal : MonoBehaviour
         // Get a reference to the animator for this animal
         animator = GetComponent<Animator>();
 
-        // Stop walking animation
-        animator.SetFloat("Speed_f", 0.0f);
-
         // Seed Random object
         Random.InitState((int)System.DateTime.Now.Ticks);
 
+        // Get the direction the animal is facing
         currentAngle = transform.eulerAngles.y;
+
+        // Stop walking animation
+        Stop();
 
         // Set the next random action time
         SetNextRandomTime();
@@ -36,18 +37,18 @@ public class Animal : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Time.time > nextRandomTime && touchingWall == 0)
+
+        if (Time.time > nextRandomTime && touchingWall == 0 && isAutomated == true)
             NextRandomAction();
 
         if (touchingWall > 0)
         {
+            Walk();
             transform.Rotate(0f, currentAngle * Time.deltaTime, 0f);
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
 
         if (isMoving)
         {
-            animator.SetFloat("Speed_f", 0.5f);
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
 
@@ -60,30 +61,24 @@ public class Animal : MonoBehaviour
 
         if (action == 0)
         {
-            animator.SetBool("Eat_b", false);
 
-            isMoving = true;
+            Walk();
 
             // Move 0 - Forward, 1 - Left, 2 - Right
             float moveDirection = Random.Range(0, 3);
             if (moveDirection == 1)
             {
                 currentAngle += 10.0f;
-                transform.Rotate(0f, currentAngle * Time.deltaTime, 0f);
             }
             else if (moveDirection == 2)
             {
                 currentAngle -= 10.0f;
-                transform.Rotate(0f, currentAngle * Time.deltaTime, 0f);
             }
 
-        }
+        } 
         else
         {
-            isMoving = false;
-            animator.SetFloat("Speed_f", 0.0f);
-            animator.SetBool("Eat_b", true);
-
+            Eat();
         }
 
         SetNextRandomTime();
@@ -95,6 +90,8 @@ public class Animal : MonoBehaviour
         nextRandomTime = Time.time + additionalTime;
     }
 
+
+    // ENCAPSULATION
     public string Name
     {
         get
@@ -107,8 +104,7 @@ public class Animal : MonoBehaviour
     {
         if (other.tag == "Wall")
         {
-            isMoving = false;
-            animator.SetFloat("Speed_f", 0.0f);
+            Stop();
             touchingWall += 1;
 
             float moveDirection = Random.Range(0, 2);
@@ -141,8 +137,45 @@ public class Animal : MonoBehaviour
         if (other.tag == "Wall")
         {
             touchingWall -= 1;
-            isMoving = true;
+            Walk();
         }
 
+    }
+
+    // ABSTRACTION
+    public void AutomateOn()
+    {
+        isAutomated = true;
+    }
+
+    // ABSTRACTION
+    public void AutomateOff()
+    {
+        isAutomated = false;
+    }
+
+    // ABSTRACTION
+    public void Walk()
+    {
+
+        animator.SetFloat("Speed_f", 0.5f);
+        animator.SetBool("Eat_b", false);
+        isMoving = true;
+
+    }
+
+    // ABSTRACTION
+    public void Eat()
+    {
+        animator.SetFloat("Speed_f", 0.0f);
+        animator.SetBool("Eat_b", true);
+        isMoving = false;
+    }
+
+    // ABSTRACTION
+    public void Stop()
+    {
+        animator.SetFloat("Speed_f", 0f);
+        isMoving = false;
     }
 }
