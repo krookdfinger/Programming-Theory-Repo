@@ -10,4 +10,15 @@ public class Dog : Animal
         this._name = "Dog";
         this.speed = 1f;
     }
+
+    public void Sit()
+    {
+        animator.SetBool("Sit_b", true);
+    }
+
+    public void Stand()
+    {
+        animator.SetBool("Sit_b", false);
+    }
 }
+

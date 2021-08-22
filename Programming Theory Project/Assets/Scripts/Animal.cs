@@ -5,22 +5,23 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     [SerializeField] private GameObject animal;
-    private Animator animator;
-    private float nextRandomTime;
+    protected Animator animator;
     protected float speed = 2.0f;
     protected string _name = "Animal";
-    private bool isMoving = false;
+    protected bool isMoving = false;
     private float currentAngle = 0.0f;
-    private float changeAngle = 0.0f;
+
+    private float nextRandomTime;
     private int touchingWall = 0;
     private bool isAutomated = true;
+    private float turnDirection = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         // Get a reference to the animator for this animal
         animator = GetComponent<Animator>();
-
+        
         // Seed Random object
         Random.InitState((int)System.DateTime.Now.Ticks);
 
@@ -39,12 +40,12 @@ public class Animal : MonoBehaviour
     {
 
         if (Time.time > nextRandomTime && touchingWall == 0 && isAutomated == true)
+            
             NextRandomAction();
 
         if (touchingWall > 0)
         {
-            Walk();
-            transform.Rotate(0f, currentAngle * Time.deltaTime, 0f);
+            transform.Rotate(0f, currentAngle * Time.fixedDeltaTime, 0f);
         }
 
         if (isMoving)
@@ -54,7 +55,7 @@ public class Animal : MonoBehaviour
 
     }
 
-    protected void NextRandomAction()
+    private void NextRandomAction()
     {
 
         float action = Random.Range(0, 2);
@@ -102,33 +103,30 @@ public class Animal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+
         if (other.CompareTag("Wall"))
         {
-            Stop();
             touchingWall += 1;
 
-            float moveDirection = Random.Range(0, 2);
+            if (touchingWall == 1)
+            {
+                animator.SetFloat("Speed_f", 0.5f);
 
-            if (moveDirection == 0)
-                changeAngle = 10.0f;
-            else
-                changeAngle = -10.0f;
+                Vector3 posDifference = new Vector3(0f, 0f, 0f) - transform.position;
+                Quaternion rotateTowards = Quaternion.LookRotation(posDifference);
+               
+                float rotateDir = Vector3.Cross(transform.forward, posDifference).y;
+                if (rotateDir >= 0)
+                    turnDirection = 1;
+                else if (rotateDir < 0)
+                    turnDirection = -1;
 
-            Debug.Log(name + " touched " + other.name);
-            Debug.Log("touching " + touchingWall + " walls");
-            Debug.Log("Current Angle: " + currentAngle);
-        }
-    }
+                currentAngle = Quaternion.Angle(transform.rotation, rotateTowards) * turnDirection;
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (touchingWall > 0 && other.CompareTag("Wall"))
-        {
-            currentAngle += changeAngle;
-            if (currentAngle < 0)
-                currentAngle += 360;
-            else if (currentAngle > 360)
-                currentAngle -= 360;
+                Debug.Log(gameObject.name + " " + currentAngle);
+
+            }
         }
     }
 
@@ -137,9 +135,7 @@ public class Animal : MonoBehaviour
         if (other.CompareTag("Wall"))
         {
             touchingWall -= 1;
-            Walk();
         }
-
     }
 
     // ABSTRACTION
@@ -157,9 +153,8 @@ public class Animal : MonoBehaviour
     // ABSTRACTION
     public void Walk()
     {
-
-        animator.SetFloat("Speed_f", 0.5f);
         animator.SetBool("Eat_b", false);
+        animator.SetFloat("Speed_f", 0.5f);
         isMoving = true;
 
     }
