@@ -9,12 +9,18 @@ public class Animal : MonoBehaviour
     protected float speed = 2.0f;
     protected string _name = "Animal";
     protected bool isMoving = false;
-    private float currentAngle = 0.0f;
+    private float rotateToAngle = 0.0f;
+    private GameObject randomTarget;
 
     private float nextRandomTime;
     private int touchingWall = 0;
     private bool isAutomated = true;
     private float turnDirection = 0;
+
+    private float minX = 11f;
+    private float maxX = -15.6f;
+    private float minZ = -3.24f;
+    private float maxZ = 12.6f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +32,19 @@ public class Animal : MonoBehaviour
         Random.InitState((int)System.DateTime.Now.Ticks);
 
         // Get the direction the animal is facing
-        currentAngle = transform.eulerAngles.y;
+        rotateToAngle = transform.eulerAngles.y;
+
+        // Create Random Target game object
+        randomTarget = new GameObject("RandomTarget");
+
+        randomTarget.transform.SetPositionAndRotation(transform.position, transform.rotation);
 
         // Stop walking animation
         Stop();
 
-        // Set the next random action time
-        SetNextRandomTime();
+        // Set next random action for the animal
+        NextRandomAction();
+
     }
 
     // Update is called once per frame
@@ -40,13 +52,12 @@ public class Animal : MonoBehaviour
     {
 
         if (Time.time > nextRandomTime && touchingWall == 0 && isAutomated == true)
-            
             NextRandomAction();
 
-        if (touchingWall > 0)
-        {
-            transform.Rotate(0f, currentAngle * Time.fixedDeltaTime, 0f);
-        }
+        //Debug.Log(this._name + ": " + transform.rotation.y + ", " + randomTarget.transform.rotation.y);
+
+        if (Mathf.Abs(transform.rotation.y - randomTarget.transform.rotation.y) > 1 || touchingWall > 0)
+            transform.Rotate(0f, rotateToAngle * Time.fixedDeltaTime, 0f);
 
         if (isMoving)
         {
@@ -63,18 +74,12 @@ public class Animal : MonoBehaviour
         if (action == 0)
         {
 
-            Walk();
+            float randomX = Random.Range(minX, maxX);
+            float randomZ = Random.Range(minZ, maxZ);
 
-            // Move 0 - Forward, 1 - Left, 2 - Right
-            float moveDirection = Random.Range(0, 3);
-            if (moveDirection == 1)
-            {
-                currentAngle += 10.0f;
-            }
-            else if (moveDirection == 2)
-            {
-                currentAngle -= 10.0f;
-            }
+            RotateTowardsTarget(randomX, randomZ);
+
+            Walk();
 
         } 
         else
@@ -101,10 +106,32 @@ public class Animal : MonoBehaviour
         }
     }
 
+
+    // ABSTRACTION
+    private void RotateTowardsTarget(float x = 0f, float z = 0f)
+    {
+
+        randomTarget.transform.position = new Vector3(x, randomTarget.transform.position.y, z);
+
+        Vector3 posDifference = randomTarget.transform.position - transform.position;
+        Quaternion rotateTowards = Quaternion.LookRotation(posDifference);
+
+        float rotateDir = Vector3.Cross(transform.forward, posDifference).y;
+        if (rotateDir >= 0)
+            turnDirection = 1;
+        else if (rotateDir < 0)
+            turnDirection = -1;
+
+        randomTarget.transform.rotation = rotateTowards;
+
+        rotateToAngle = Quaternion.Angle(transform.rotation, rotateTowards) * turnDirection;
+
+       
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         
-
         if (other.CompareTag("Wall"))
         {
             touchingWall += 1;
@@ -113,20 +140,20 @@ public class Animal : MonoBehaviour
             {
                 animator.SetFloat("Speed_f", 0.5f);
 
-                Vector3 posDifference = new Vector3(0f, 0f, 0f) - transform.position;
-                Quaternion rotateTowards = Quaternion.LookRotation(posDifference);
-               
-                float rotateDir = Vector3.Cross(transform.forward, posDifference).y;
-                if (rotateDir >= 0)
-                    turnDirection = 1;
-                else if (rotateDir < 0)
-                    turnDirection = -1;
-
-                currentAngle = Quaternion.Angle(transform.rotation, rotateTowards) * turnDirection;
-
-                Debug.Log(gameObject.name + " " + currentAngle);
+                RotateTowardsTarget(0f, 0f);
 
             }
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("HIT");
+            float randomX = Random.Range(minX, maxX);
+            float randomZ = Random.Range(minZ, maxZ);
+
+            RotateTowardsTarget(randomX, randomZ);
+
+            Walk();
         }
     }
 

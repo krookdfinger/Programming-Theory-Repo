@@ -7,6 +7,6 @@ public class Cow : Animal
     public Cow()
     {
         this._name = "Cow";
-        this.speed = .7f;
+        this.speed = 1.1f;
     }
 }
