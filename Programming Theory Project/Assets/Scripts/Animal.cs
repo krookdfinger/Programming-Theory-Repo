@@ -11,7 +11,7 @@ public class Animal : MonoBehaviour
     protected bool isMoving = false;
     private float rotateToAngle = 0.0f;
     private GameObject randomTarget;
-
+    private AudioSource audioSource;
     private float nextRandomTime;
     private int touchingWall = 0;
     private bool isAutomated = true;
@@ -27,7 +27,10 @@ public class Animal : MonoBehaviour
     {
         // Get a reference to the animator for this animal
         animator = GetComponent<Animator>();
-        
+
+        // Set Audio Source
+        audioSource = GetComponent<AudioSource>();
+
         // Seed Random object
         Random.InitState((int)System.DateTime.Now.Ticks);
 
@@ -56,11 +59,11 @@ public class Animal : MonoBehaviour
 
         //Debug.Log(this._name + ": " + transform.rotation.y + ", " + randomTarget.transform.rotation.y);
 
-        if (Mathf.Abs(transform.rotation.y - randomTarget.transform.rotation.y) > 1 || touchingWall > 0)
+        if (isMoving)
+        { 
+            if (Mathf.Abs(transform.rotation.y - randomTarget.transform.rotation.y) > 1 || touchingWall > 0 )
             transform.Rotate(0f, rotateToAngle * Time.fixedDeltaTime, 0f);
 
-        if (isMoving)
-        {
             transform.Translate( Time.deltaTime * speed * Vector3.forward);
         }
 
@@ -69,11 +72,11 @@ public class Animal : MonoBehaviour
     private void NextRandomAction()
     {
 
-        float action = Random.Range(0, 2);
+        float action = Random.Range(0, 3);
 
         if (action == 0)
         {
-
+            // Move
             float randomX = Random.Range(minX, maxX);
             float randomZ = Random.Range(minZ, maxZ);
 
@@ -81,9 +84,15 @@ public class Animal : MonoBehaviour
 
             Walk();
 
-        } 
+        }
+        else if (action == 1)
+        {
+            // Make Sound
+            audioSource.Play();
+        }
         else
         {
+            // Eat
             Eat();
         }
 
@@ -147,13 +156,7 @@ public class Animal : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("HIT");
-            float randomX = Random.Range(minX, maxX);
-            float randomZ = Random.Range(minZ, maxZ);
-
-            RotateTowardsTarget(randomX, randomZ);
-
-            Walk();
+            Stop();
         }
     }
 
