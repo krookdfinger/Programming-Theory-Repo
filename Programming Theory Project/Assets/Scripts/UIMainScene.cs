@@ -16,7 +16,7 @@ public class UIMainScene : MonoBehaviour
 
     private void Awake()
     {
-        farmTitle = GameObject.Find("Canvas").GetComponentInChildren<TMP_Text>();
+        farmTitle = GameObject.Find("Title").GetComponentInChildren<TMP_Text>();
 
         farmTitle.text = "Old " + GameManager.Instance.PlayerName + "'s Farm";
     }

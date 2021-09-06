@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+
 
 public class Animal : MonoBehaviour
 {
     [SerializeField] private GameObject animal;
+    private AnimalActionMenu menu;
     protected Animator animator;
     protected float speed = 2.0f;
     protected string _name = "Animal";
@@ -16,7 +17,7 @@ public class Animal : MonoBehaviour
     private int touchingWall = 0;
     private bool isAutomated = true;
     private float turnDirection = 0;
-
+    private Vector3 menuOffset = new Vector3(0, 5, 0);
     private float minX = 11f;
     private float maxX = -15.6f;
     private float minZ = -3.24f;
@@ -31,6 +32,11 @@ public class Animal : MonoBehaviour
         // Set Audio Source
         audioSource = GetComponent<AudioSource>();
 
+        // Create a game menu for this animal
+        menu = Instantiate(GameObject.Find("AnimalActionMenu").GetComponent<AnimalActionMenu>(), transform.position + menuOffset, Quaternion.identity);
+        menu.animal = this;
+        menu.hidden = false;
+
         // Seed Random object
         Random.InitState((int)System.DateTime.Now.Ticks);
 
@@ -39,7 +45,6 @@ public class Animal : MonoBehaviour
 
         // Create Random Target game object
         randomTarget = new GameObject("RandomTarget");
-
         randomTarget.transform.SetPositionAndRotation(transform.position, transform.rotation);
 
         // Stop walking animation
@@ -50,6 +55,11 @@ public class Animal : MonoBehaviour
 
     }
 
+    private void OnMouseDown()
+    {
+        menu.hidden = !menu.hidden;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -57,7 +67,9 @@ public class Animal : MonoBehaviour
         if (Time.time > nextRandomTime && touchingWall == 0 && isAutomated == true)
             NextRandomAction();
 
-        //Debug.Log(this._name + ": " + transform.rotation.y + ", " + randomTarget.transform.rotation.y);
+
+        menu.transform.rotation = new Quaternion(0, 123.456f, 0, 0);
+        menu.transform.position = transform.position + menuOffset;
 
         if (isMoving)
         { 
@@ -87,8 +99,9 @@ public class Animal : MonoBehaviour
         }
         else if (action == 1)
         {
-            // Make Sound
-            audioSource.Play();
+            // Speak
+            Speak();
+
         }
         else
         {
@@ -195,6 +208,12 @@ public class Animal : MonoBehaviour
         animator.SetFloat("Speed_f", 0.0f);
         animator.SetBool("Eat_b", true);
         isMoving = false;
+    }
+
+    public void Speak()
+    {
+        // Make Sound
+        audioSource.Play();
     }
 
     // ABSTRACTION
